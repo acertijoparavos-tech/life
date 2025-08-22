@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acertijos</title>
+  <style>
+    body {
+      background-color: #111;
+      color: #eee;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background: #1a1a1a;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.7);
+      width: 90%;
+      max-width: 700px;
+      text-align: center;
+    }
+    h1, h2 {
+      color: #9b59b6;
+    }
+    .riddle {
+      margin-bottom: 25px;
+    }
+    .riddle p {
+      font-size: 1.1em;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      margin-top: 10px;
+      font-size: 1em;
+      background: #2a2a2a;
+      color: #eee;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #9b59b6, #5b21b6);
+      color: #fff;
+      font-size: 1em;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    button:hover {
+      transform: scale(1.05);
+    }
+    .hidden {
+      display: none;
+    }
+    img {
+      max-width: 100%;
+      margin: 15px 0;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.6);
+    }
+    .acertijo-text {
+      margin-top: 20px;
+      font-size: 1em;
+      color: #ddd;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Acertijos Misteriosos</h1>
+
+    <div id="riddle1" class="riddle">
+      <p>Acertijo 1: Si me tienes, todos somos lo mismo. Si me pierdes, aparece la diferencia. ¿Qué soy?</p>
+      <input type="text" id="answer1" placeholder="Tu respuesta...">
+      <button onclick="checkAnswer(1, 'igualdad')">Responder</button>
+    </div>
+
+    <div id="riddle2" class="riddle hidden">
+      <p>Acertijo 2: Tengo una balanza pero no soy tienda. No miro rostros, solo verdades. ¿Quién soy?</p>
+      <input type="text" id="answer2" placeholder="Tu respuesta...">
+      <button onclick="checkAnswer(2, 'justicia')">Responder</button>
+    </div>
+
+    <div id="riddle3" class="riddle hidden">
+      <p>Acertijo 3: Cuanto más grande soy, menos puedes ver. ¿Qué soy?</p>
+      <input type="text" id="answer3" placeholder="Tu respuesta...">
+      <button onclick="checkAnswer(3, 'oscuridad')">Responder</button>
+    </div>
+
+    <div id="riddle4" class="riddle hidden">
+      <p>Acertijo 4: Crezco cuando se comparte, muero cuando se traiciona. ¿Qué soy?</p>
+      <input type="text" id="answer4" placeholder="Tu respuesta...">
+      <button onclick="checkAnswer(4, 'amistad')">Responder</button>
+    </div>
+
+    <div id="riddle5" class="riddle hidden">
+      <p>Acertijo 5: Oculto lo que eres, muestro lo que no. ¿Qué soy?</p>
+      <input type="text" id="answer5" placeholder="Tu respuesta...">
+      <button onclick="checkAnswer(5, 'mascara')">Responder</button>
+    </div>
+
+    <div id="final" class="hidden">
+      <h2>¡Felicidades!</h2>
+      <p>Cada vez más cerca...</p>
+      <img src="https://chesscul.com/wp-content/uploads/2024/10/Captura-de-pantalla-2024-10-30-103553.jpg" alt="Movimientos del caballo en ajedrez">
+      <img src="https://img.freepik.com/vector-premium/tablero-ajedrez-juego-ajedrez_165079-1267.jpg?w=1060" alt="Tablero de ajedrez">
+      
+      <div class="acertijo-text">
+        <p>Un viejo tablero de ajedrez descansa ante vos. Un caballo empieza en la esquina inferior izquierda, numerada como 1. Cada vez que se mueve en su salto característico, anota el número de la casilla en la que aterriza. Después de 4 movimientos exactos, ¿cuál es la suma más alta que podría haber registrado? Piensa en cada salto: la suma final es la que importa, no la distancia que recorras.</p>
+      </div>
+
+      <input type="text" id="password" placeholder="Contraseña...">
+      <button onclick="checkPassword()">Confirmar</button>
+    </div>
+  </div>
+
+  <script>
+    function checkAnswer(num, correct) {
+      let input = document.getElementById('answer' + num).value.toLowerCase().trim();
+      if (input === correct) {
+        document.getElementById('riddle' + num).classList.add('hidden');
+        if (num < 5) {
+          document.getElementById('riddle' + (num+1)).classList.remove('hidden');
+        } else {
+          document.getElementById('final').classList.remove('hidden');
+        }
+      } else {
+        alert('Respuesta incorrecta, intenta de nuevo.');
+      }
+    }
+
+    function checkPassword() {
+      let pass = document.getElementById('password').value.toLowerCase().trim();
+      if(pass === "154"){
+        alert("¡Correcto! Has descubierto la contraseña.");
+      } else {
+        alert("Contraseña incorrecta, intenta otra vez.");
+      }
+    }
+  </script>
+</body>
+</html>
